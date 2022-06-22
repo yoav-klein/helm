@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-subchart-configmap
+data:
+   salad: {{ .Values.global.salad }}
+   dessert: {{ .Values.dessert }}
