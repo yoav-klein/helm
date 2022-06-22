@@ -1,0 +1,15 @@
+{{- define "foo.labels" }}
+  labels:
+     generator: helm
+     date: {{ now | htmlDate }}
+{{- end}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  {{- template "foo.labels" }}
+data:
+  myvalue: "Hello world"
+  {{- range $key, $value := .Values.favorite }}
+  {{ $key }}: {{ $value }}
+  {{- end }}

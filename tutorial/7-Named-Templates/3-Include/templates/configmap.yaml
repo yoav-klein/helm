@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  labels:
+   {{- include "foo.app" . | indent 4 }}
+data:
+  myvalue: "Hello world"
+  {{- range $key, $value := .Values.favorite }}
+  {{ $key }}: {{ $value }}
+  {{- end }}
+  {{- include "foo.app" . | indent 2 }}
