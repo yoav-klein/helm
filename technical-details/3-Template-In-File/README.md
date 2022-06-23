@@ -1,5 +1,10 @@
-# Whitespace Handling
+# Partial templates
 ---
 
-This contains some experimenting code to help you understand how all the `{{-` and `-}}` stuff works in Helm.
-It's pretty dirty, look at the Google docs document we wrote "Helm/Chart template guide"
+This is where things get really weird. 
+
+In this example, we demonstrate how to include a named (or partial) template
+in a template, handling all the whitespaces and newlines.
+
+In this example, we use the `template` action, which is not what we'll usually use.
+Rather, `include` is a better choice, as we'll see.

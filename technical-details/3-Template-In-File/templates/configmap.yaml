@@ -1,5 +1,4 @@
-
-{{- define "foo.labels"  }}
+{{- define "foo.labels" -}}
   labels:
     generator: helm
     date: {{ now | htmlDate }}
@@ -8,7 +7,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-configmap
+  name: my-configmap
   {{ template "foo.labels"  }}
 data:
    animal: dog

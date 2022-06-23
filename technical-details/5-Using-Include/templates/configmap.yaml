@@ -1,12 +1,12 @@
 {{- define "foo.extraLabels" -}}
-    version: "v1"
-    app: "myapp"
+version: "v1"
+app: "myapp"
 {{- end }}
 
 {{- define "foo.labels" -}}
   labels:
     generator: helm
-    {{ template "foo.extraLabels" }}
+    {{- include  "foo.extraLabels" . | nindent 4 }}
     date: {{ now | htmlDate }}
 {{- end }}
 
