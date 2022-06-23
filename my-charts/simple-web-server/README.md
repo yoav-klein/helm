@@ -1,9 +1,7 @@
-# Simple Web Server
+# Helm-EchoServer
 ---
 
-This is a simple chart, which runs a simple web server application, to get started.
+This chart runs the `helm-echoserver` application, which is a server application
+that just prints some data, such as environment variables and contents of some file.
 
-The chart will create the following objects:
-- A deployment running `nginx`
-- A service exposing the server
-- A ConfigMap
+This demonstrates a simple chart with only a Deployment and a Service.

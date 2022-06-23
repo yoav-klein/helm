@@ -1,0 +1,30 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-server.fullname" . }}
+spec:
+  replicas: {{ default 2 .Values.replicaCount  }}
+  selector:
+    matchLabels:
+     {{- include "my-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "my-server.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy  }}
+          ports: 
+          - name: http
+            containerPort: {{ .Values.containerPort }}
+          env:
+           - name: PORT
+             value: "{{ .Values.containerPort }}"
+           {{- range $key,$value := .Values.envVars }}
+           - name: {{ $key }}
+             value: {{ $value | quote }}
+           {{- end  }}
+
