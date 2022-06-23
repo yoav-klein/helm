@@ -1,0 +1,19 @@
+{{- define "foo.extraLabels" -}}
+    version: "v1"
+    app: "myapp"
+{{- end }}
+
+{{- define "foo.labels" -}}
+  labels:
+    generator: helm
+    date: {{ now | htmlDate }}
+    {{ template "foo.extraLabels" }}
+{{- end }}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+  {{ template "foo.labels"  }}
+data:
+   animal: dog
