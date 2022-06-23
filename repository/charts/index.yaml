@@ -1,0 +1,24 @@
+apiVersion: v1
+entries:
+  foo:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-21T15:27:04.45122541Z"
+    description: A Helm chart for Kubernetes
+    digest: 26bcc443ed5f2e923c6b4b228857a215ac9752cdbfcdd666d72c368a24c7ceb8
+    name: foo
+    type: application
+    urls:
+    - foo-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-21T15:27:04.450615612Z"
+    description: A Helm chart for Kubernetes
+    digest: 203a081e543f5245ece35d82e813d34b8baacc2071b101bfcb0e023f996d7c48
+    name: foo
+    type: application
+    urls:
+    - foo-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-06-21T15:27:04.447722691Z"

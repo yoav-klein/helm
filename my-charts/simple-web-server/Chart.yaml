@@ -1,0 +1,6 @@
+apiVersion: v2
+name: my-server
+version: 1.0.0
+description: A starter chart for practice
+home: https://github.com/yoav-klein/helm
+appVersion: 1.2.3
