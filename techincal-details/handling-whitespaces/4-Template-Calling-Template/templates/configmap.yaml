@@ -1,6 +1,6 @@
 {{- define "foo.extraLabels" -}}
-    version: "v1"
-    app: "myapp"
+version: "v1"
+app: "myapp"
 {{- end }}
 
 {{- define "foo.labels" -}}
