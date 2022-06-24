@@ -4,16 +4,16 @@ app: "myapp"
 {{- end }}
 
 {{- define "foo.labels" -}}
-  labels:
-    generator: helm
-    {{- include  "foo.extraLabels" . | nindent 4 }}
-    date: {{ now | htmlDate }}
+labels:
+  generator: helm
+  {{- include  "foo.extraLabels" . | nindent 2 }}
+  date: {{ now | htmlDate }}
 {{- end }}
 
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-configmap
-  {{ template "foo.labels"  }}
+  {{- include "foo.labels" . | nindent 2 }}
 data:
    animal: dog
