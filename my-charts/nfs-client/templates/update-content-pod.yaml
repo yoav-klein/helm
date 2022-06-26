@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: update-content-pod
-  namespace: nfs-pv
+  name: {{ printf "%s-update-content" ( include "nfs-client.fullname" . )  }}
 spec:
   containers:
   - image: busybox
@@ -15,4 +14,4 @@ spec:
   volumes:
   - name: nfs
     persistentVolumeClaim:
-      claimName: nfs-pvc
+      claimName: {{  include "nfs-client.fullname" . }}

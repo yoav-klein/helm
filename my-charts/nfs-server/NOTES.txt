@@ -7,7 +7,7 @@
 The NFS server is up !
 
 Get the IP of the NFS server by running:
-$kubectl get --namespace {{ .Values.namespace }} get svc {{ include "nfs-server.fullname" . }} -o jsonpath="{.spec.clusterIP}"
+$kubectl get --namespace {{ .Values.namespace }} get svc {{ include "nfs-server.fullname" }} -o jsonpath="{.spec.clusterIP}"
 
 
 

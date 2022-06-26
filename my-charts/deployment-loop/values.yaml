@@ -1,0 +1,13 @@
+containerPort: 80
+image:
+  repository: praqma/echo-server
+  tag: 1.0
+  pullPolicy: "IfNotPresent"
+sizes:
+- name: small
+  port: 1000
+- name: medium
+  port: 2000
+- name: large
+  port: 3000
+

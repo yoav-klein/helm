@@ -1,0 +1,28 @@
+
+{{- range .Values.sizes }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .name }}
+spec:
+  replicas: {{ default 2 $.Values.replicaCount  }}
+  selector:
+    matchLabels:
+     {{- include "foo.selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "foo.selectorLabels" $ | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ $.Chart.Name }}
+          image: {{ $.Values.image.repository }}:{{ $.Values.image.tag }}
+          imagePullPolicy: {{ $.Values.image.pullPolicy  }}
+          ports: 
+          - name: http
+            containerPort: {{ $.Values.containerPort }}
+          env:
+           - name: PORT
+             value: "{{ .port }}"
+---
+{{- end }}

@@ -1,10 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web-server
-  namespace: nfs-pv
+  name: {{ printf "%s-web-server" ( include "nfs-client.fullname" . ) }}
   labels:
-    app: web
+    {{- include "nfs-client.labels" . | nindent 4  }}
 spec:
   containers:
     - name: web-sever
@@ -18,5 +17,5 @@ spec:
   volumes:
   - name: nfs
     persistentVolumeClaim:
-      claimName: nfs-pvc
+      claimName: {{ include "nfs-client.fullname" . }}
 

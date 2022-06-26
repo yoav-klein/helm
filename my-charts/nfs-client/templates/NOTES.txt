@@ -1,0 +1,11 @@
++++++++++++++++++++++++++++
++                         +
++     NFS client          +
++                         +
++++++++++++++++++++++++++++
+
+Run this to see the service in action:
+
+$ SVC_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "nfs-client.fullname" . }} -o jsonpath="{.spec.clusterIP}")
+$ curl $SVC_IP
+

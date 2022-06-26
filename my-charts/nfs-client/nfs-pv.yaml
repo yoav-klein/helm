@@ -6,8 +6,8 @@ spec:
   capacity:
     storage: 10Mi
   accessModes:
-  - ReadOnlyMany
-  persistentVolumeReclaimPolicy: Delete
+  - ReadWriteMany
+ # persistentVolumeReclaimPolicy: Delete
   nfs: 
-    server: 10.111.142.120
+    server: 10.100.165.105
     path: "/nfs-export"
