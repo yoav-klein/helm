@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nfs-server.name" . }}
+  namespace: {{ .Values.namepsace }}
+spec:
+  ports:
+  - name: nfs
+    port: {{ .Values.ports.nfs }}
+  - name: mountd
+    port: {{ .Values.ports.mountd }}
+  - name: statd
+    port: {{ .Values.ports.statd }}
+  - name: rpcbind
+    port: {{ .Values.ports.rpcbind }}
+  selector:
+    {{- include "nfs-server.selectorLabels" . | nindent 4 }}
