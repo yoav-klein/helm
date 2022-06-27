@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         {{- include "foo.selectorLabels" $ | nindent 8 }}
+        size: {{ .name }}
     spec:
       containers:
         - name: {{ $.Chart.Name }}
@@ -20,9 +21,11 @@ spec:
           imagePullPolicy: {{ $.Values.image.pullPolicy  }}
           ports: 
           - name: http
-            containerPort: {{ $.Values.containerPort }}
+            containerPort: {{ .port }}
           env:
            - name: PORT
              value: "{{ .port }}"
+           - name: SIZE
+             value: "{{ .name }}"
 ---
 {{- end }}

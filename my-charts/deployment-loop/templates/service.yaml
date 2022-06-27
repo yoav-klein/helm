@@ -1,0 +1,18 @@
+
+{{- range .Values.sizes }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ printf "%s-%s" ( include "foo.fullname" $ ) .name }}
+spec:
+  type: {{ $.Values.service.type }}
+  ports:
+  - name: http
+    targetPort: http
+    protocol: TCP
+    port: {{ .port }}
+  selector:
+    {{- include "foo.selectorLabels" $ | nindent 4 }}
+    size: {{ .name  }}
+---
+{{- end }}

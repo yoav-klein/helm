@@ -1,0 +1,18 @@
+## Running !!
+
+Now you have 3 deployments, with 3 services serving them. One for small, one for medium and one for large.
+
+Get the IP of large:
+
+{{- if contains .Values.service.type "NodePort" }}
+export SERVICE_PORT=$(kubectl get svc -n {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" {{ printf "%s-large" ( include "foo.fullname" . ) }})
+export SERVICE_IP=$(kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}")
+$ curl $NODE_IP:$NODE_PORT
+{{- else if contains .Values.service.type "ClusterIP" }}
+export SERVICE_PORT=$(kubectl get svc -n {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].port}" {{ printf "%s-large" ( include "foo.fullname" . ) }})
+export SERVICE_IP=$(kubectl get svc -n {{ .Release.Namespace }} -o jsonpath="{.spec.clusterIP}" {{ printf "%s-large" ( include "foo.fullname"  . ) }})
+$ curl $SERVICE_IP:$SERVICE_PORT
+{{- end }}
+
+Now run:
+$ curl $SERVICE_IP:$SERVICE_PORT/env

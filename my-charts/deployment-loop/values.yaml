@@ -1,7 +1,9 @@
+service:
+  type: ClusterIP
 containerPort: 80
 image:
-  repository: praqma/echo-server
-  tag: 1.0
+  repository: praqma/helm-echoserver
+  tag: "1.0"
   pullPolicy: "IfNotPresent"
 sizes:
 - name: small
@@ -10,4 +12,3 @@ sizes:
   port: 2000
 - name: large
   port: 3000
-
