@@ -4,7 +4,7 @@ metadata:
   name: configmap
 data:
    animal: dog
-   {{ if eq .Values.drink "coffee" }}
+   {{- if eq .Values.drink "coffee" }}
    mug: true
-   {{ end }} 
+   {{- end }} 
    food: burger
